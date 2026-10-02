@@ -1,0 +1,325 @@
+// Hero -------------------------------------------------------------
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding-block: 4rem 5rem;
+
+  @include media-breakpoint-up(lg) {
+    padding-block: 7rem 8rem;
+  }
+
+  &__shape {
+    position: absolute;
+    z-index: -1;
+    border-radius: 50%;
+    filter: blur(70px);
+    opacity: 0.45;
+    animation: float 9s ease-in-out infinite;
+
+    &--one {
+      top: -120px;
+      right: -80px;
+      width: 420px;
+      height: 420px;
+      background: rgba($primary, 0.35);
+    }
+
+    &--two {
+      bottom: -160px;
+      left: -120px;
+      width: 380px;
+      height: 380px;
+      background: rgba($accent, 0.3);
+      animation-delay: -4s;
+    }
+  }
+
+  &__status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.4rem 0.9rem;
+    border: 1px solid $line;
+    border-radius: 999px;
+    background: #fff;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: $ink-soft;
+  }
+
+  &__dot {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50%;
+    background: #2fa36b;
+    box-shadow: 0 0 0 4px rgba(#2fa36b, 0.18);
+  }
+
+  &__title {
+    margin-block: 1.5rem 1.25rem;
+    font-size: clamp(2.4rem, 6vw, 4.25rem);
+    font-weight: 800;
+    line-height: 1.05;
+  }
+
+  &__role {
+    display: block;
+    background: linear-gradient(90deg, $primary, $accent);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  &__lead {
+    max-width: 560px;
+    font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+    color: $ink-soft;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2rem;
+
+    // Sur mobile, les boutons prennent toute la largeur.
+    @include media-breakpoint-down(sm) {
+      .btn {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.code-card {
+  overflow: hidden;
+  border-radius: $border-radius-lg;
+  background: $dark;
+  box-shadow: 0 30px 60px -30px rgba($ink, 0.6);
+
+  @include media-breakpoint-up(lg) {
+    transform: rotate(1.5deg);
+  }
+
+  &__bar {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.85rem 1rem;
+    background: rgba(#fff, 0.05);
+
+    i {
+      width: 0.7rem;
+      height: 0.7rem;
+      border-radius: 50%;
+      background: #ef6b5b;
+
+      &:nth-child(2) {
+        background: #f2c14e;
+      }
+
+      &:nth-child(3) {
+        background: #5cc58a;
+      }
+    }
+
+    span {
+      margin-left: 0.75rem;
+      font-size: 0.8rem;
+      color: rgba(#fff, 0.5);
+    }
+  }
+
+  &__body {
+    margin: 0;
+    padding: 1.5rem;
+    font-size: clamp(0.78rem, 1.5vw, 0.95rem);
+    line-height: 1.8;
+    color: #d7e3e1;
+    white-space: pre;
+    overflow-x: auto;
+  }
+
+  .tok-k {
+    color: #e8a17a;
+  }
+
+  .tok-v {
+    color: #8fd3c8;
+  }
+
+  .tok-p {
+    color: #b4c7f0;
+  }
+
+  .tok-s {
+    color: #b8dd8f;
+  }
+}
+
+// Chiffres clés -------------------------------------------------------------
+.facts {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+
+  @include media-breakpoint-up(sm) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include media-breakpoint-up(lg) {
+    grid-template-columns: 1fr;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    border: 1px solid $line;
+    border-radius: $border-radius-lg;
+    background: #fff;
+    @include lift;
+
+    @include media-breakpoint-up(lg) {
+      flex-direction: row;
+      align-items: baseline;
+      gap: 1rem;
+    }
+  }
+
+  &__value {
+    font-family: $headings-font-family;
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: $primary;
+  }
+
+  &__label {
+    color: $ink-soft;
+  }
+}
+
+// Compétences ---------------------------------------------------------------
+.skill-card {
+  padding: 1.75rem;
+  border: 1px solid $line;
+  border-radius: $border-radius-lg;
+  background: #fff;
+  @include lift;
+
+  &__icon {
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    margin-bottom: 1.25rem;
+    border-radius: 0.8rem;
+    font-size: 1.25rem;
+    color: $primary;
+    background: rgba($primary, 0.08);
+  }
+
+  &__title {
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+  }
+
+  &__list {
+    margin: 0;
+
+    li {
+      padding-block: 0.35rem;
+      color: $ink-soft;
+      border-bottom: 1px dashed $line;
+
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+  }
+}
+
+// Appel à l'action ------------------------------------------------------------
+.cta {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2.5rem 2rem;
+  border-radius: $border-radius-lg * 1.5;
+  color: #fff;
+  background: radial-gradient(circle at 85% 20%, rgba($accent, 0.45), transparent 45%),
+    linear-gradient(135deg, $primary, $dark);
+
+  @include media-breakpoint-up(md) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3.5rem;
+  }
+
+  &__title {
+    color: #fff;
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+  }
+
+  &__text {
+    margin: 0;
+    max-width: 560px;
+    color: rgba(#fff, 0.8);
+  }
+}
+
+// Frise du parcours ------------------------------------------------------------
+.timeline {
+  position: relative;
+  margin: 0;
+  padding-left: 2rem;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    left: 0.45rem;
+    width: 2px;
+    background: linear-gradient($primary, $accent);
+  }
+
+  &__item {
+    position: relative;
+    padding: 0 0 2.25rem;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+
+  &__dot {
+    position: absolute;
+    top: 0.4rem;
+    left: -2rem;
+    width: 1rem;
+    height: 1rem;
+    border: 3px solid $paper;
+    border-radius: 50%;
+    background: $primary;
+    box-shadow: 0 0 0 2px $primary;
+  }
+
+  &__period {
+    margin-bottom: 0.25rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: $accent;
+  }
+
+  &__title {
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+  }
+
+  &__text {
+    margin: 0;
+    color: $ink-soft;
+  }
+}

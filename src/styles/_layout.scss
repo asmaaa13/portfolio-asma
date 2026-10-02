@@ -1,0 +1,184 @@
+// En-tête -------------------------------------------------------------
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  background: rgba($paper, 0.85);
+  backdrop-filter: saturate(160%) blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color $transition-base, box-shadow $transition-base;
+
+  &.is-scrolled,
+  &.is-open {
+    border-bottom-color: $line;
+    box-shadow: 0 8px 30px -24px rgba($ink, 0.5);
+  }
+
+  .nav-link {
+    position: relative;
+    font-weight: 500;
+    color: $ink-soft;
+    padding-block: 0.75rem;
+
+    &:hover,
+    &.active {
+      color: $ink;
+      text-decoration: none;
+    }
+
+    @include media-breakpoint-up(lg) {
+      padding-inline: 0.9rem !important;
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0.9rem;
+        right: 0.9rem;
+        bottom: 0.35rem;
+        height: 2px;
+        border-radius: 2px;
+        background: $accent;
+        transform: scaleX(0);
+        transition: transform $transition-base;
+      }
+
+      &.active::after,
+      &:hover::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+
+  // Menu mobile : séparation visuelle des liens.
+  @include media-breakpoint-down(lg) {
+    .navbar-collapse {
+      padding-block: 0.5rem 1.25rem;
+    }
+
+    .nav-item + .nav-item {
+      border-top: 1px solid $line;
+    }
+  }
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: $ink;
+
+  &:hover {
+    text-decoration: none;
+    color: $ink;
+  }
+
+  &__mark {
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.8rem;
+    font-family: $headings-font-family;
+    font-weight: 800;
+    color: #fff;
+    background: linear-gradient(135deg, $primary, darken($primary, 8%));
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    font-family: $headings-font-family;
+    font-weight: 700;
+    line-height: 1.1;
+
+    small {
+      font-family: $font-family-sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: $ink-soft;
+    }
+  }
+}
+
+// Bouton burger animé.
+.burger {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 0 10px;
+  border: 1px solid $line;
+  border-radius: $border-radius-sm;
+  background: #fff;
+
+  &:focus {
+    box-shadow: none;
+  }
+
+  span {
+    display: block;
+    height: 2px;
+    border-radius: 2px;
+    background: $ink;
+    transition: transform $transition-base, opacity $transition-base;
+  }
+
+  &[aria-expanded="true"] {
+    span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    span:nth-child(2) {
+      opacity: 0;
+    }
+
+    span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+  }
+}
+
+// Pied de page -----------------------------------------------------------
+.site-footer {
+  padding-block: 4rem 2rem;
+  color: rgba($paper, 0.75);
+  background: $dark;
+
+  a {
+    color: rgba($paper, 0.9);
+
+    &:hover {
+      color: #fff;
+    }
+  }
+
+  li + li {
+    margin-top: 0.4rem;
+  }
+
+  &__brand {
+    font-family: $headings-font-family;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+
+  &__title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: lighten($accent, 15%);
+    margin-bottom: 0.9rem;
+  }
+
+  &__bottom {
+    margin: 3rem 0 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba($paper, 0.12);
+    font-size: 0.875rem;
+  }
+}

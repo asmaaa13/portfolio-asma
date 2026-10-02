@@ -1,0 +1,306 @@
+// Visuel d'un projet ----------------------------------------------------
+.project-cover {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background: $paper-alt;
+
+  &__img {
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  // Vignette générée tant qu'il n'y a pas de capture d'écran.
+  &--placeholder {
+    display: flex;
+    align-items: flex-end;
+    padding: 1.5rem;
+    color: #fff;
+    background: radial-gradient(circle at 80% 15%, rgba(#fff, 0.22), transparent 40%),
+      linear-gradient(140deg, var(--project-color, $primary), $dark 130%);
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(#fff, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(#fff, 0.06) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+  }
+
+  &__window {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    display: flex;
+    gap: 0.35rem;
+
+    i {
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 50%;
+      background: rgba(#fff, 0.55);
+    }
+  }
+
+  &__title {
+    position: relative;
+    font-family: $headings-font-family;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    transition: transform 0.6s ease;
+  }
+}
+
+// Carte projet ---------------------------------------------------------
+.project-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid $line;
+  border-radius: $border-radius-lg;
+  background: #fff;
+  @include lift;
+
+  &:hover {
+    .project-cover__img,
+    .project-cover__title {
+      transform: scale(1.04);
+    }
+
+    .project-card__more {
+      color: $accent;
+      transform: translateX(4px);
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 1.5rem;
+  }
+
+  &__meta {
+    margin-bottom: 0.35rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: $ink-soft;
+  }
+
+  &__title {
+    font-size: 1.3rem;
+    margin-bottom: 0.6rem;
+
+    a {
+      color: $ink;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  &__summary {
+    color: $ink-soft;
+    font-size: 0.97rem;
+  }
+
+  &__stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: auto;
+    padding-top: 0.5rem;
+  }
+
+  &__more {
+    margin-top: 1.25rem;
+    font-weight: 600;
+    color: $primary;
+    transition: color $transition-base, transform $transition-base;
+  }
+}
+
+// Filtres -------------------------------------------------------------------
+.filters {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 0.5rem;
+
+  // Mobile : défilement horizontal plutôt que plusieurs lignes.
+  overflow-x: auto;
+  scrollbar-width: thin;
+
+  @include media-breakpoint-up(md) {
+    flex-wrap: wrap;
+    overflow: visible;
+  }
+
+  &__btn {
+    flex-shrink: 0;
+    padding: 0.45rem 1rem;
+    border: 1px solid $line;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: $ink-soft;
+    background: #fff;
+    transition: all $transition-base;
+
+    &:hover {
+      border-color: $primary;
+      color: $primary;
+    }
+
+    &.is-active {
+      border-color: $primary;
+      color: #fff;
+      background: $primary;
+    }
+  }
+}
+
+.fade-item {
+  animation: fade-up 0.45s ease both;
+}
+
+// Page détail ---------------------------------------------------------------
+.project-hero-cover .project-cover {
+  border-radius: $border-radius-lg * 1.5;
+  aspect-ratio: 16 / 8;
+
+  @include media-breakpoint-down(md) {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+.project-block {
+  margin-bottom: 2.75rem;
+
+  h2 {
+    font-size: 1.4rem;
+    margin-bottom: 0.9rem;
+  }
+
+  p {
+    color: $ink-soft;
+  }
+}
+
+.check-list {
+  padding: 0;
+  list-style: none;
+
+  li {
+    position: relative;
+    padding: 0.4rem 0 0.4rem 2rem;
+    color: $ink-soft;
+
+    &::before {
+      content: "✓";
+      position: absolute;
+      top: 0.45rem;
+      left: 0;
+      display: grid;
+      place-items: center;
+      width: 1.35rem;
+      height: 1.35rem;
+      border-radius: 50%;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: $primary;
+      background: rgba($primary, 0.1);
+    }
+  }
+}
+
+.project-aside {
+  padding: 1.75rem;
+  border: 1px solid $line;
+  border-radius: $border-radius-lg;
+  background: #fff;
+
+  @include media-breakpoint-up(lg) {
+    position: sticky;
+    top: $header-height + 24px;
+  }
+
+  dl {
+    margin: 0;
+  }
+
+  dt {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $ink-soft;
+  }
+
+  dd {
+    margin-bottom: 1.25rem;
+    font-weight: 500;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.gallery-item {
+  overflow: hidden;
+  margin: 0;
+  border: 1px solid $line;
+  border-radius: $border-radius-lg;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.project-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding-block: 2rem 5rem;
+  border-top: 1px solid $line;
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    padding: 1.25rem;
+    border-radius: $border-radius;
+    color: $ink;
+    transition: background-color $transition-base;
+
+    &:hover {
+      text-decoration: none;
+      background: $paper-alt;
+    }
+
+    span {
+      font-size: 0.85rem;
+      color: $ink-soft;
+    }
+
+    strong {
+      font-family: $headings-font-family;
+      font-size: 1.15rem;
+    }
+
+    &--next {
+      grid-column: 2;
+      text-align: right;
+    }
+  }
+}

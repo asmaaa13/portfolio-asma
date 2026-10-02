@@ -1,0 +1,54 @@
+// ---------------------------------------------------------------
+// Palette et typographie : surcharge des variables Bootstrap.
+// Ces valeurs doivent être déclarées AVANT l'import de Bootstrap.
+// ---------------------------------------------------------------
+
+$ink: #1b2a2f;          // texte principal
+$ink-soft: #55656b;     // texte secondaire
+$paper: #fbfaf7;        // fond de page, blanc cassé
+$paper-alt: #f2efe8;    // fond des sections alternées
+$line: #e3ded3;         // bordures discrètes
+
+$primary: #0f5c55;      // vert pétrole, clin d'œil au génie biologique
+$secondary: $ink-soft;
+$accent: #c4774a;       // terre cuite, pour les touches de chaleur
+$dark: #12201f;
+
+$body-bg: $paper;
+$body-color: $ink;
+$link-color: $primary;
+$link-decoration: none;
+$link-hover-decoration: underline;
+
+$font-family-sans-serif: var(--font-body), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+$headings-font-family: var(--font-heading), var(--font-body), system-ui, sans-serif;
+$headings-font-weight: 700;
+$headings-color: $ink;
+$font-size-base: 1.0625rem;
+$line-height-base: 1.65;
+
+$border-color: $line;
+$border-radius: 0.75rem;
+$border-radius-sm: 0.5rem;
+$border-radius-lg: 1.25rem;
+
+$btn-padding-y: 0.7rem;
+$btn-padding-x: 1.4rem;
+$btn-font-weight: 600;
+$btn-border-radius: 999px;
+$btn-border-radius-lg: 999px;
+$btn-border-radius-sm: 999px;
+
+$input-bg: #fff;
+$input-border-color: $line;
+$input-padding-y: 0.75rem;
+$input-padding-x: 1rem;
+$input-focus-border-color: $primary;
+
+$navbar-padding-y: 1rem;
+
+$enable-shadows: false;
+$enable-negative-margins: true;
+
+$transition-base: 0.25s ease;
+$header-height: 76px;

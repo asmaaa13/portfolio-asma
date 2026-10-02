@@ -1,0 +1,144 @@
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: $header-height + 16px;
+}
+
+body {
+  background: $body-bg;
+  color: $body-color;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  letter-spacing: -0.02em;
+}
+
+::selection {
+  background: rgba($primary, 0.18);
+}
+
+:focus-visible {
+  outline: 3px solid rgba($accent, 0.7);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  z-index: 2000;
+  padding: 0.6rem 1rem;
+  border-radius: $border-radius-sm;
+  background: $primary;
+  color: #fff;
+
+  &:focus {
+    top: 1rem;
+  }
+}
+
+// Sections ----------------------------------------------------------
+.section {
+  padding-block: 4.5rem;
+
+  @include media-breakpoint-up(lg) {
+    padding-block: 6.5rem;
+  }
+
+  &--alt {
+    background: $paper-alt;
+  }
+}
+
+.eyebrow {
+  margin-bottom: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: $accent;
+}
+
+.section-title {
+  max-width: 640px;
+  margin-bottom: 3rem;
+
+  &--center {
+    margin-inline: auto;
+    text-align: center;
+
+    .section-title__heading::after {
+      margin-inline: auto;
+    }
+  }
+
+  &__heading {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    margin-bottom: 0;
+
+    &::after {
+      @include accent-bar;
+    }
+  }
+
+  &__intro {
+    margin-top: 1.25rem;
+    margin-bottom: 0;
+    color: $ink-soft;
+  }
+}
+
+.link-arrow {
+  font-weight: 600;
+
+  &::after {
+    content: " →";
+    display: inline-block;
+    transition: transform $transition-base;
+  }
+
+  &:hover {
+    text-decoration: none;
+
+    &::after {
+      transform: translateX(4px);
+    }
+  }
+}
+
+// Boutons --------------------------------------------------------------
+.btn {
+  transition: transform $transition-base, background-color $transition-base, color $transition-base,
+    box-shadow $transition-base;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: none;
+  }
+}
+
+.btn-primary:hover {
+  box-shadow: 0 10px 24px -12px rgba($primary, 0.8);
+}
+
+// Badges technologiques -------------------------------------------------
+.tech-badge {
+  display: inline-block;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: $primary;
+  background: rgba($primary, 0.08);
+  border: 1px solid rgba($primary, 0.14);
+}
